@@ -1,0 +1,17 @@
+@mixin scrollable() {
+
+  scrollbar * {
+    all: unset;
+  }
+
+  scrollbar.vertical {
+    transition: $transition;
+    background-color: transparentize($bg, 0.8);
+  }
+
+  scrollbar.vertical slider {
+    background-color: transparentize($fg, 0.8);
+    border-radius: $radius;
+    transition: $transition;
+  }
+}

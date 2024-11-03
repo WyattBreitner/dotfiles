@@ -1,0 +1,55 @@
+@use 'sass:color';
+
+@mixin bar-button() {
+  background-color: $bg;
+  border-radius: $radius;
+  margin: $spacing * 0.3;
+  padding: $padding * .6;
+
+  label {
+    font-weight: bold;
+  }
+}
+
+.bar {
+  background-color: $bg;
+
+  .bar-button {
+    @include bar-button;
+  }
+
+  .time {
+    padding-right: $padding * 1.2;
+    padding-left: $padding * 1.2;
+  }
+
+  .workspaces {
+    label {
+      font-size: 0;
+      min-width: 5pt;
+      min-height: 5pt;
+      margin: 0 $padding * .5;
+      border-radius: $radius;
+      transition: $transition;
+      background-color: transparentize($fg, .7);
+
+      &.occupied {
+        background-color: transparentize($fg, .3);
+        min-width: 6.5pt;
+        min-height: 6.5pt;
+      }
+
+      &.active {
+        min-width: 14pt;
+        min-height: 8pt;
+        background-color: $fg
+      }
+
+    }
+
+  }
+}
+
+.bar.transparent {
+  background-color: transparent;
+}

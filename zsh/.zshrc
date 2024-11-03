@@ -1,6 +1,17 @@
-if [[ -z "$TMUX" ]]; then
- 	exec tmux -2 new-session -A -s main
-fi
+#if [[ -z "$TMUX" ]]; then
+# 	exec tmux -2 new-session -A -s main
+#fi
+#if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ] [ -z "$(command list-clients tmux)"  ]; then
+#    exec tmux new-session -A -s main 
+#fi
+# if [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
+#     for i in {1..10};
+# 	do
+# 	  if [ -z "$(tmux list-clients -t $i)" ]; then
+# 		  exec tmux new-session -A -s $i
+# 	  fi
+#  	done
+# fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -8,10 +19,6 @@ fi
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-# tmux theming 
-export TINTED_TMUX_OPTION_ACTIVE=1
-export TINTED_TMUX_OPTION_STATUSBAR=1
 
 source ~/.antidote/antidote.zsh
 
@@ -54,6 +61,13 @@ n ()
     }
 }
 
+# Path
+path+=('/home/wyatt/scripts')
+path+=('/usr/bin')
+
+export PATH
+
+echo ${TMUX}
 
 # Alises
 alias vim='nvim' 

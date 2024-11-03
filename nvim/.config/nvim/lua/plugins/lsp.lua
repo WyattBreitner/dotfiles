@@ -9,7 +9,7 @@ return {
 		config = function()
 			require("mason").setup()
 			require("mason-lspconfig").setup {
-				ensure_installed = { "lua_ls", "ruff", "pylsp", "pyright" }
+				ensure_installed = { "lua_ls", "ruff", "pylsp", "pyright", "cssls", "jsonls", "ts_ls", "eslint" }
 			}
 			local lspconfig = require("lspconfig")
 
@@ -35,6 +35,14 @@ return {
 			lspconfig.pylsp.setup { capabilities = capabilities,
 				setting = { pylsp = { plugins = { rope_autoimports = { enabled = true } } } } }
 			lspconfig.pyright.setup { capabilities = capabilities }
+
+			lspconfig.cssls.setup { capabilities = capabilities }
+
+			lspconfig.jsonls.setup {}
+
+			lspconfig.ts_ls.setup { capabilities = capabilities }
+
+			lspconfig.eslint.setup { capabilities = capabilities }
 
 
 			local opts = { noremap = true, silent = true }

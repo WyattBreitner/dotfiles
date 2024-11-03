@@ -1,0 +1,23 @@
+.notification {
+  background-color: transparentize($fg, .9);
+  border-radius: $radius;
+
+  .title {
+    margin-right: $spacing;
+  }
+
+  .icon {
+    margin: $padding;
+  }
+
+  .close-button {
+    background-color: transparentize($fg, .9);
+    margin: $padding;
+    border-radius: $radius;
+
+    &:hover {
+      background-color: transparentize($fg, .7);
+    }
+  }
+
+}

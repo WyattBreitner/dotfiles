@@ -1,0 +1,7 @@
+@mixin popup-window {
+  background-color: $bg;
+  color: $fg;
+  border-radius: $radius;
+  margin: $spacing * .3;
+  //padding: $padding;
+}
