@@ -1,5 +1,12 @@
 @use 'sass:color';
 
+$fg: #8653cb;
+$bg: #141414;
+$radius: 11px;
+$padding: 7pt;
+$spacing: 12pt;
+$transition: 200ms;
+
 @mixin bar-button() {
   background-color: $bg;
   border-radius: $radius;
@@ -11,11 +18,12 @@
   }
 }
 
-.bar {
-  background-color: $bg;
+
+window.Bar {
+  background-color: transparent;
 
   .bar-button {
-    @include bar-button;
+    @include bar-button
   }
 
   .time {
@@ -24,32 +32,43 @@
   }
 
   .workspaces {
+    @include bar-button;
+
     label {
       font-size: 0;
       min-width: 5pt;
       min-height: 5pt;
-      margin: 0 $padding * .5;
       border-radius: $radius;
+      margin: 0 $padding * .5;
       transition: $transition;
-      background-color: transparentize($fg, .7);
+      background-color: color.adjust($fg, $alpha: -0.7);
 
       &.occupied {
-        background-color: transparentize($fg, .3);
         min-width: 6.5pt;
         min-height: 6.5pt;
+        background-color: color.adjust($fg, $alpha: -0.3);
       }
 
       &.active {
         min-width: 14pt;
         min-height: 8pt;
-        background-color: $fg
+        background-color: $fg;
       }
-
     }
-
   }
 }
 
-.bar.transparent {
-  background-color: transparent;
+separator {
+  background-color: color.adjust($fg, $alpha: -0.6);
+  min-width: 1pt;
+  min-height: 1pt;
+  border-radius: $radius;
+}
+
+separator.horizontal {
+  margin: $padding 0;
+}
+
+separator.vertical {
+  margin: 0 $padding;
 }
