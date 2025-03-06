@@ -18,17 +18,34 @@ $transition: 200ms;
   }
 }
 
+menu {
+  color: white;
+  background-color: $bg;
+}
 
 window.Bar {
   background-color: transparent;
+
+  button {
+    background-image: none;
+    border-color: transparent;
+    box-shadow: none;
+    color: transparent;
+  }
+
 
   .bar-button {
     @include bar-button
   }
 
   .time {
+    background-color: $bg;
     padding-right: $padding * 1.2;
     padding-left: $padding * 1.2;
+
+    label {
+      color: white;
+    }
   }
 
   .workspaces {

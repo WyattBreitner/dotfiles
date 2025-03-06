@@ -38,24 +38,17 @@ function SysTray(): JSX.Element {
 	const tray = Tray.get_default()
 
 	return <box>
-		{bind(tray, "items").as(items => items.map(item => {
-			if (item.iconThemePath) {
-				App.add_icons(item.iconThemePath)
-			}
-
-			const menu = item.create_menu()
-
-			return <button
+		{bind(tray, "items").as(items => items.map(item => (
+			<menubutton
 				className={"bar-button"}
-				tooltipMarkup={item.tooltipMarkup}
-				onDestroy={() => menu?.destroy()}
-				onClickRelease={self => {
-					menu?.popup_at_widget(self, Gdk.Gravity.SOUTH, Gdk.Gravity.NORTH, null)
-				}}>
-				<icon gIcon={bind(item, "gicon")} />
-			</button>
-		}))}
-	</box>
+				tooltipMarkup={bind(item, "tooltipMarkup")}
+				usePopover={false}
+				actionGroup={bind(item, "actionGroup").as(ag => ["dbusmenu", ag])}
+				menuModel={bind(item, "menuModel")}>
+				<icon gicon={bind(item, "gicon")} />
+			</menubutton>
+		)))}
+	</box >
 }
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
